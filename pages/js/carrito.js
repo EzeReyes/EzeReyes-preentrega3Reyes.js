@@ -26,7 +26,9 @@ const mostrarProducto = (p) => { p.forEach(( prod ) => {
 }
 mostrarProducto(producto)
 
-desc.addEventListener("click",mostrarProducto(prodDesc))
+desc.onclick = () => {
+    mostrarProducto(prodDesc)
+}
 
 let carrito =[]
 
