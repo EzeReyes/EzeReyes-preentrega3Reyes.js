@@ -17,7 +17,7 @@ let producto = [
         precio: 600,
         img: "./img/carrito/productos/2brutus.jpeg",
         descripcion: "Balsamo para Barba y Bigote.Nuestro bálsamo para barba exfolia e hidrata",
-        tipo: "pomada",
+        tipo: "balsamo",
         oferta: false,
     },
     {   
@@ -62,7 +62,7 @@ let producto = [
         precio: 450,
         img: "./img/carrito/productos/7matte.jpg",
         descripcion: "Pomada de fijación media y acabado mate/opaco. Enriquecido con extractos naturales",
-        tipo: "cera",
+        tipo: "pomada",
         oferta: false,
     },
     {   
@@ -80,7 +80,7 @@ let producto = [
         precio: 600,
         img: "./img/carrito/productos/9powder.jpg",
         descripcion: "Polvo voluminizador 3D para cabello normal y fino. Enriquecido con pantenol",
-        tipo: "powder",
+        tipo: "polvo",
         oferta: false,
     },
     {   

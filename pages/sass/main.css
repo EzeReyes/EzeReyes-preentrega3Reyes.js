@@ -1692,7 +1692,7 @@ aside div video {
   }
 }
 
-.carrito {
+.carrito, .prodConDescuento, .cera, .pomada {
   display: grid;
   grid-area: car;
   grid-template-columns: repeat(2, 1fr);
@@ -1704,31 +1704,31 @@ aside div video {
   padding: 1rem;
   border: 1rem solid;
 }
-.carrito div {
+.carrito div, .prodConDescuento div, .cera div, .pomada div {
   display: flex;
   flex-direction: column;
   width: 15rem;
   height: auto;
   border-radius: 1rem;
 }
-.carrito div .carrito__titulo {
+.carrito div .carrito__titulo, .prodConDescuento div .carrito__titulo, .cera div .carrito__titulo, .pomada div .carrito__titulo {
   text-align: center;
   color: #dee7f3;
   font-style: oblique;
   font-weight: 900;
 }
-.carrito div .carrito__botones {
+.carrito div .carrito__botones, .prodConDescuento div .carrito__botones, .cera div .carrito__botones, .pomada div .carrito__botones {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
   margin-top: 1rem;
 }
-.carrito div img {
+.carrito div img, .prodConDescuento div img, .cera div img, .pomada div img {
   border-radius: 1rem;
   cursor: pointer;
 }
-.carrito div h3 {
+.carrito div h3, .prodConDescuento div h3, .cera div h3, .pomada div h3 {
   font-size: 1rem;
   color: #000000;
   text-align: center;
