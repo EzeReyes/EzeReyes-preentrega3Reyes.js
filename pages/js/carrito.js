@@ -91,11 +91,16 @@ contenedor4.style.display= "none"
 
     todos.onclick = () => {      
     contenedor.style.display = "grid" 
+    contenedor2.style.display = "none" 
+    contenedor3.style.display = "none" 
+    contenedor4.style.display = "none" 
         }
 
 
     desc.onclick = () => {      
     contenedor.style.display = "none" 
+    contenedor3.style.display = "none" 
+    contenedor4.style.display = "none" 
     contenedor2.style.display = "grid" 
     }
 
@@ -103,6 +108,7 @@ contenedor4.style.display= "none"
         contenedor.style.display = "none" 
         contenedor2.style.display = "none" 
         contenedor3.style.display = "grid" 
+        contenedor4.style.display = "none" 
         }
 
     pomada.onclick = () => {      
