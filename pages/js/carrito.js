@@ -1,5 +1,3 @@
-/* PROFE EL INCONVENIENTE SE ENCUENTRA AL MOMENTO DE REALIZAR EL CLICK EN EL BOTON DESC, DEBERÍA CARGAR AL DOM LOS PRODUCTOS CON DESCUENTO, PERO ME SUMA LOS PRODUCTOS CON DESCUENTO AL ARRAY DE PRODUCTOS */
-/* FILTRA PRODUCTOS CON DESCUENTO */
 const prodDesc = producto.filter(( elemento ) => {
     return elemento.oferta==true
 })
@@ -12,6 +10,7 @@ const pomadas = producto.filter((elemento) => {
     return elemento.tipo=="pomada"
 })
 
+const busquedaPorletra = document.querySelector("#buscador")
 const cera = document.querySelector("#categoriaCera")
 const pomada = document.querySelector("#categoriaPomada")
 const desc = document.querySelector("#btndesc")
@@ -20,10 +19,12 @@ const contenedor = document.querySelector(".carrito")
 const contenedor2 = document.querySelector(".prodConDescuento")
 const contenedor3 = document.querySelector(".cera")
 const contenedor4 = document.querySelector(".pomada")
+const vistaCarrito = document.querySelector(".vistaPreviaCarrito")
 contenedor2.style.display= "none"
 contenedor3.style.display= "none"
 contenedor4.style.display= "none"
 
+let carrito = []
 
     producto.forEach(( prod ) => {
         const card = document.createElement("div")
@@ -35,7 +36,7 @@ contenedor4.style.display= "none"
         </div>
         <h3>$${prod.precio}</h3>
         <div class="carrito__botones">
-            <button class="btnCompra"><p>${prod.id}AGREGAR</p></button>
+        <button id="boton-${prod.id}" class="btnCompra"><p>AGREGAR</p></button>
         </div>
         </div>`
         contenedor.appendChild(card) 
@@ -83,12 +84,21 @@ contenedor4.style.display= "none"
                 </div>
                 <h3>$${prod.precio}</h3>
                 <div class="carrito__botones">
-                    <button class="btnCompra"><p>${prod.id}AGREGAR</p></button>
+                    <button id="boton-${prod.id}" class="btnCompra"><p>AGREGAR</p></button>
                 </div>
                 </div>`
                 contenedor4.appendChild(card) 
                 })
 
+
+                const botonComprar = document.querySelectorAll(".btnCompra")
+
+                botonComprar.onclick = () => {
+                    producto.push(carrito) 
+                    console.log(carrito)
+                }
+
+                
     todos.onclick = () => {      
     contenedor.style.display = "grid" 
     contenedor2.style.display = "none" 
@@ -119,15 +129,19 @@ contenedor4.style.display= "none"
         }
 
 
-/* let carrito =[]
 
-const botonAgregarAlCarrito = document.querySelector(".btnCompra")
-
-/*FUNCION AGREGAR AL CARRITO /*  
-const agregarAlCarrito = (prodId) => {
-    const item = producto.find((prod) => 
-    prodId === prod.id)
-    agregarAlCarrito.push(item)
+function aniadirAlCarrito (array) {
+    const botonAniadir = document.querySelectorAll(".btnCompra")    
+    botonAniadir.forEach( boton => {
+        boton.onclick = () => {
+            const id = boton.id.slice(6)
+            const filtrarProducto = array.find((elemento) => {
+                return elemento.id === Number(id)
+            })
+            carrito.push(filtrarProducto)   
+            console.log(carrito)
+            localStorage.setItem("carrito", JSON.stringify(carrito))   
+        }
+    })
 }
-
- */ 
+aniadirAlCarrito(producto)
