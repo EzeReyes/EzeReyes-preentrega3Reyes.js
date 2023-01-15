@@ -1,15 +1,3 @@
-const prodDesc = producto.filter(( elemento ) => {
-    return elemento.oferta==true
-})
-
-const ceras = producto.filter((elemento) => {
-    return elemento.tipo=="cera"
-})
-
-const pomadas = producto.filter((elemento) => {
-    return elemento.tipo=="pomada"
-})
-
 const busquedaPorletra = document.querySelector("#buscador")
 const cera = document.querySelector("#categoriaCera")
 const pomada = document.querySelector("#categoriaPomada")
@@ -24,6 +12,18 @@ contenedor2.style.display= "none"
 contenedor3.style.display= "none"
 contenedor4.style.display= "none"
 
+const prodDesc = producto.filter(( elemento ) => {
+    return elemento.oferta==true
+})
+
+const ceras = producto.filter((elemento) => {
+    return elemento.tipo=="cera"
+})
+
+const pomadas = producto.filter((elemento) => {
+    return elemento.tipo=="pomada"
+})
+
 let carrito = []
 
 const cardHtml = ( array,c ) => {
@@ -31,10 +31,10 @@ const cardHtml = ( array,c ) => {
         return acc + `
             <div class="card" id="producto-${element.id}">
                 <div class="container-img">
-                    <img src=${element.img} alt=${element.name}>
+                    <img src=${element.img} alt=${element.nombre}>
                 </div>                
                 <h3>
-                    ${element.name}
+                    ${element.nombre}
                 </h3>
                 <h3>
                     ${element.precio}
@@ -103,6 +103,7 @@ function aniadirAlCarrito (array) {
             const filtrarProducto = array.find((elemento) => {
                 return elemento.id === Number(id)
             })
+            swal(`Buena elección: ${filtrarProducto.tipo}`,`${filtrarProducto.nombre}`) 
             const repeat = carrito.some((repeatproduct) => repeatproduct.id === filtrarProducto.id)
             console.log(repeat)
             if (repeat) {
@@ -114,8 +115,8 @@ function aniadirAlCarrito (array) {
             } else{
             carrito.push(filtrarProducto)   }
             console.log(carrito)
-            contadorCarro()
-            localStorage.setItem("carrito", JSON.stringify(carrito))   
+            localStorage.setItem("carrito", JSON.stringify(carrito))  
+                        contadorCarro()
         }
     })
 }

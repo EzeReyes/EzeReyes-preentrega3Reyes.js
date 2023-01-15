@@ -3,20 +3,14 @@ let contador = document.querySelector("#contadorCarrito")
 contador.innerText = infoDelLs.length
 const contenedorCarrito = document.querySelector(".containerCarrito")
 
+
+
 function totalCompra () {
-    let sumaTotal = infoDelLs.reduce((acu,element) => acu + element.precio,0)
+    let sumaTotal = infoDelLs.reduce((acu,element) => acu + element.precio*element.cantidad,0)
     console.log(sumaTotal)
     document.querySelector("#total").innerHTML = `Total de su compra: ${sumaTotal}`
     }
     totalCompra()
-
-function buscarCantidad (array) {
-    let cantidad = array.includes((element) => {
-        element.nombre })
-    console.log(cantidad)
-    console.log(infoDelLs)
-}
-buscarCantidad(infoDelLs)
 
 const cardHtml = ( array ) => {
     const generarNodos = array.reduce(( acc, element) => {
@@ -34,6 +28,9 @@ const cardHtml = ( array ) => {
                 <h3>
                     Cantidad: ${element.cantidad}
                 </h3>
+                <h3>
+                    total por el producto = ${element.precio*element.cantidad}
+                </h3>
                 <button id="boton-${element.id}" class="btnBorrar">
                     Borrar
                 </button>
@@ -45,7 +42,8 @@ const cardHtml = ( array ) => {
 }
 cardHtml(infoDelLs || [] )
 
-
+const repeat = infoDelLs.some((repeatproduct) => repeatproduct.id === infoDelLs.id)
+            console.log(repeat)
 
 
 function borrarDelCarrito (array) {
@@ -56,13 +54,22 @@ function borrarDelCarrito (array) {
                 const filtrarProducto = array.filter((elemento,i) => {
                     return elemento.id != Number(id)
                 })
+            //     const repeat = infoDelLs.some((repeatproduct) => repeatproduct.id === filtrarProducto.id)
+            // console.log(repeat)
+            // if (repeat) {
+            //     carrito.map((prod) => {
+            //         if(prod.id === filtrarProducto.id){
+            //             prod.cantidad ++;
+            //         }
+            //     })
+            // } else{
                 infoDelLs = filtrarProducto
                 localStorage.setItem("carrito", JSON.stringify(infoDelLs))
                 console.log(infoDelLs.length)
                 cardHtml(infoDelLs)
                 borrarDelCarrito(infoDelLs)
-                contador.innerText = infoDelLs.length
                 totalCompra()
+                contador.innerText = infoDelLs.length
             }
         })
     }
