@@ -26,92 +26,46 @@ contenedor4.style.display= "none"
 
 let carrito = []
 
-    producto.forEach(( prod ) => {
-        const card = document.createElement("div")
-        card.innerHTML = `
-        <p>${prod.nombre}</p>
-        </div>
-        <div class="carrito__prod">
-        <img src="${prod.img}" alt="${prod.nombre}">
-        </div>
-        <h3>$${prod.precio}</h3>
-        <div class="carrito__botones">
-        <button id="boton-${prod.id}" class="btnCompra"><p>AGREGAR</p></button>
-        </div>
-        </div>`
-        contenedor.appendChild(card) 
-        })
-        
-        prodDesc.forEach(( prod ) => {
-            const card = document.createElement("div")
-            card.innerHTML = `
-            <p>${prod.nombre}</p>
+const cardHtml = ( array,c ) => {
+    const generarNodos = array.reduce(( acc, element) => {
+        return acc + `
+            <div class="card" id="producto-${element.id}">
+                <div class="container-img">
+                    <img src=${element.img} alt=${element.name}>
+                </div>                
+                <h3>
+                    ${element.name}
+                </h3>
+                <h3>
+                    ${element.precio}
+                </h3>
+                <button id="boton-${element.id}" class="btnCompra">
+                    Agregar del carrito
+                </button>
             </div>
-            <div class="carrito__prod">
-            <img src="${prod.img}" alt="${prod.nombre}">
-            </div>
-            <h3>$${prod.precio}</h3>
-            <div class="carrito__botones">
-                <button class="btnCompra"><p>${prod.id}AGREGAR</p></button>
-            </div>
-            </div>`
-            contenedor2.appendChild(card) 
-            })
+        `
+    }, "")
 
-        ceras.forEach(( prod ) => {
-            const card = document.createElement("div")
-            card.innerHTML = `
-            <p>${prod.nombre}</p>
-            </div>
-            <div class="carrito__prod">
-            <img src="${prod.img}" alt="${prod.nombre}">
-            </div>
-            <h3>$${prod.precio}</h3>
-            <div class="carrito__botones">
-                <button class="btnCompra"><p>${prod.id}AGREGAR</p></button>
-            </div>
-            </div>`
-            contenedor3.appendChild(card) 
-            })
+    document.querySelector(c).innerHTML = generarNodos
+}
+cardHtml(producto,".carrito")
+cardHtml(prodDesc,".prodConDescuento")
+cardHtml(ceras,".cera")
+cardHtml(pomadas,".pomada")
 
-            pomadas.forEach(( prod ) => {
-                const card = document.createElement("div")
-                card.innerHTML = `
-                <p>${prod.nombre}</p>
-                </div>
-                <div class="carrito__prod">
-                <img src="${prod.img}" alt="${prod.nombre}">
-                </div>
-                <h3>$${prod.precio}</h3>
-                <div class="carrito__botones">
-                    <button id="boton-${prod.id}" class="btnCompra"><p>AGREGAR</p></button>
-                </div>
-                </div>`
-                contenedor4.appendChild(card) 
-                })
-
-
-                const botonComprar = document.querySelectorAll(".btnCompra")
-
-                botonComprar.onclick = () => {
-                    producto.push(carrito) 
-                    console.log(carrito)
-                }
-
-                
-    todos.onclick = () => {      
-    contenedor.style.display = "grid" 
-    contenedor2.style.display = "none" 
-    contenedor3.style.display = "none" 
-    contenedor4.style.display = "none" 
-        }
+    todos.onclick = () => { 
+        contenedor.style.display = "grid" 
+        contenedor2.style.display = "none" 
+        contenedor3.style.display = "none" 
+        contenedor4.style.display = "none"
+    }
 
 
     desc.onclick = () => {      
     contenedor.style.display = "none" 
-    contenedor3.style.display = "none" 
-    contenedor4.style.display = "none" 
-    contenedor2.style.display = "grid" 
+        contenedor2.style.display = "grid" 
+        contenedor3.style.display = "none" 
+        contenedor4.style.display = "none"
     }
 
     cera.onclick = () => {      
@@ -128,6 +82,17 @@ let carrito = []
         contenedor4.style.display = "grid" 
         }
 
+        const contador = document.querySelector("#contadorCarrito")
+
+        function contadorCarro () {
+            if (carrito.length === 0) {
+                contador.innerText.style.display=none
+            }
+            else {
+                contador.innerText = carrito.length
+            }
+        }
+
 
 
 function aniadirAlCarrito (array) {
@@ -138,10 +103,24 @@ function aniadirAlCarrito (array) {
             const filtrarProducto = array.find((elemento) => {
                 return elemento.id === Number(id)
             })
-            carrito.push(filtrarProducto)   
+            const repeat = carrito.some((repeatproduct) => repeatproduct.id === filtrarProducto.id)
+            console.log(repeat)
+            if (repeat) {
+                carrito.map((prod) => {
+                    if(prod.id === filtrarProducto.id){
+                        prod.cantidad ++;
+                    }
+                })
+            } else{
+            carrito.push(filtrarProducto)   }
             console.log(carrito)
+            contadorCarro()
             localStorage.setItem("carrito", JSON.stringify(carrito))   
         }
     })
 }
 aniadirAlCarrito(producto)
+
+
+const productosElegidos = JSON.parse(localStorage.getItem("carrito"))
+carrito = productosElegidos || []

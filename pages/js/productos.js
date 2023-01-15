@@ -10,6 +10,7 @@ let producto = [
         descripcion: "Ceras ABM linea Candy Fruits. Fijación media a fuerte HIDRATA y MODELA",
         tipo: "cera",
         oferta: true,
+        cantidad: 1,
     },
     {
         id: 02,
@@ -19,6 +20,7 @@ let producto = [
         descripcion: "Balsamo para Barba y Bigote.Nuestro bálsamo para barba exfolia e hidrata",
         tipo: "balsamo",
         oferta: false,
+        cantidad: 1,
     },
     {   
         id: 03,
@@ -28,6 +30,7 @@ let producto = [
         descripcion: "Arcilla de alta calidad: Ingredientes orgánicos puros y arcilla bentonita",
         tipo: "pomada",
         oferta: false,
+        cantidad: 1,
     },
     {   
         id: 04,
@@ -37,6 +40,7 @@ let producto = [
         descripcion: "Gel GOMINA de extra brillo y fijación ultra fuerte.Fragancia Kosiuko, efecto humedo",
         tipo: "gel",
         oferta: false,
+        cantidad: 1,
     },
     {
         id: 05,
@@ -46,6 +50,7 @@ let producto = [
         descripcion: "Ceras ABM linea Candy Fruits. Fijación media a fuerte HIDRATA y MODELA",
         tipo: "cera",
         oferta: true,
+        cantidad: 1,
     },
     {   
         id: 06,
@@ -55,6 +60,7 @@ let producto = [
         descripcion: "Fragancia exclusiva Staygold: notas cítricas, acuáticas y amaderadas",
         tipo: "cera",
         oferta: false,
+        cantidad: 1,
     },
     {   
         id: 07,
@@ -64,6 +70,7 @@ let producto = [
         descripcion: "Pomada de fijación media y acabado mate/opaco. Enriquecido con extractos naturales",
         tipo: "pomada",
         oferta: false,
+        cantidad: 1,
     },
     {   
         id: 08,
@@ -73,6 +80,7 @@ let producto = [
         descripcion: "Óleo Formulado con mezcla de aceites que promueven el crecimiento del vello de la barba",
         tipo: "oleo",
         oferta: false,
+        cantidad: 1,
     },
     {   
         id: 09,
@@ -82,6 +90,7 @@ let producto = [
         descripcion: "Polvo voluminizador 3D para cabello normal y fino. Enriquecido con pantenol",
         tipo: "polvo",
         oferta: false,
+        cantidad: 1,
     },
     {   
         id: 10,
@@ -91,6 +100,7 @@ let producto = [
         descripcion: "Shaving Gel es un gel de afeitado que no oscurece, tampoco se convierte en espuma",
         tipo: "gel",
         oferta: false,
+        cantidad: 1,
     }
 ]
 

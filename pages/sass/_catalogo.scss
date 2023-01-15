@@ -61,7 +61,7 @@
         }
     }
 
-.carrito, .prodConDescuento, .cera, .pomada {
+.carrito, .prodConDescuento, .cera, .pomada, .containerCarrito {
     display: grid;
     grid-area: car;
     grid-template-columns: repeat(2, 1fr);
